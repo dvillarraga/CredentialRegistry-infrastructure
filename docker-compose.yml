@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  #credential_registry:
+  #  build: .
+  #  image: my-credential-registry
+  postgres:
+    image: "postgres:9.4"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: metadataregistry
+      POSTGRES_PASSWORD: metadataregistry
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+  redis:
+    image: "redis:4.0.0"
+    ports:
+      - "6379:6379"
+    environment:
+      POSTGRES_USER: master
+      POSTGRES_PASSWORD: password
+    volumes:
+      - redis_data:/data
+  gremlin:
+    image: "tinkerpop/gremlin-server:3.3.4"
+    ports:
+      - "8182:8182"
+    command: conf/gremlin-server-secure.yaml
+volumes:
+  postgresql_data:
+  redis_data:
