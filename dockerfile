@@ -1,4 +1,4 @@
-FROM jruby:9.1.2.0
+FROM ruby:2.7.4
 COPY ./CredentialRegistry /app
-RUN gem install bundler
+RUN apt-get -y update && gem install bundler &&  apt-get install -y postgresql-client
 RUN /app/bin/setup
