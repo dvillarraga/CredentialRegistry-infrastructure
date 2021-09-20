@@ -3,7 +3,7 @@
 
 properties([
   parameters([
-    string(name: 'branch', defaultValue: , description: 'Branch to Build')
+    string(name: 'branch', defaultValue: 'master', description: 'Branch to Build')
    ])
 ])
 
