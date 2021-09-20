@@ -5,19 +5,19 @@ properties([
   parameters([
     string(name: 'region', defaultValue: 'us-east-1', description: 'AWS Region'),
     string(name: 'appRepo', defaultValue: 'https://github.com/dvillarraga/CredentialRegistry.git', description: 'HTTPS Public Application Repository'),
-    string(name: 'appName', defaultValue: 'CredentialRegistry', description: 'App Name'),
-    string(name: 'repoUri', defaultValue: '815996728789.dkr.ecr.us-east-1.amazonaws.com', description: 'ECR Repo URI')
+    string(name: 'repoUri', defaultValue: '815996728789.dkr.ecr.us-east-1.amazonaws.com', description: 'ECR Repo URI'),
+    string(name: 'repoName', defaultValue: 'credential-registry', description: 'ECR Repo Name')
    ])
 ])
 
 def region = params.region
 def appRepo = params.appRepo
-def appName = params.appName
 def repoUri = params.repoUri
+def repoName = params.repoName
 
 ecr_build_push_pipeline {
     region        = region
     appRepo       = appRepo
-    appName       = appName
-    repoUri     = repoUri
+    repoUri       = repoUri
+    repoName      = repoName
 }
