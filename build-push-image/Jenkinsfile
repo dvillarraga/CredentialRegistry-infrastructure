@@ -3,21 +3,16 @@
 
 properties([
   parameters([
-    string(name: 'region', defaultValue: 'us-east-1', description: 'AWS Region'),
-    string(name: 'appRepo', defaultValue: 'https://github.com/dvillarraga/CredentialRegistry.git', description: 'HTTPS Public Application Repository'),
-    string(name: 'repoUri', defaultValue: '815996728789.dkr.ecr.us-east-1.amazonaws.com', description: 'ECR Repo URI'),
-    string(name: 'repoName', defaultValue: 'credential-registry', description: 'ECR Repo Name')
+    string(name: 'branch', defaultValue: , description: 'Branch to Build')
    ])
 ])
 
-def region = params.region
-def appRepo = params.appRepo
-def repoUri = params.repoUri
-def repoName = params.repoName
+def branch = params.branch
 
 ecr_build_push_pipeline {
-    region        = region
-    appRepo       = appRepo
-    repoUri       = repoUri
-    repoName      = repoName
+    region        = 'us-east-1'
+    appRepo       = 'https://github.com/dvillarraga/CredentialRegistry.git'
+    repoUri       = '815996728789.dkr.ecr.us-east-1.amazonaws.com'
+    repoName      = 'credential-registry'
+    branch        = branch
 }
