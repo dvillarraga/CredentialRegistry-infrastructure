@@ -11,7 +11,7 @@ properties([
 def region = params.region
 def appRepo = params.appRepo
 
-cloudformation_pipeline {
+ecr_build_push_pipeline {
     region        = region
     appRepo       = appRepo
 }
