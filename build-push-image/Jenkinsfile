@@ -4,14 +4,20 @@
 properties([
   parameters([
     string(name: 'region', defaultValue: 'us-east-1', description: 'AWS Region'),
-    string(name: 'appRepo', defaultValue: 'https://github.com/dvillarraga/CredentialRegistry.git', description: 'HTTPS Public Application Repository')
+    string(name: 'appRepo', defaultValue: 'https://github.com/dvillarraga/CredentialRegistry.git', description: 'HTTPS Public Application Repository'),
+    string(name: 'appName', defaultValue: 'CredentialRegistry', description: 'App Name'),
+    string(name: 'accountId', defaultValue: '815996728789', description: 'AWS Account ID')
    ])
 ])
 
 def region = params.region
 def appRepo = params.appRepo
+def appName = params.appName
+def accountId = params.accountId
 
 ecr_build_push_pipeline {
     region        = region
     appRepo       = appRepo
+    appName       = appName
+    accountId     = accountId
 }
