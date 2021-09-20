@@ -1,0 +1,17 @@
+#!groovy
+@Library('jenkins-shared-library') _
+
+properties([
+  parameters([
+    string(name: 'region', defaultValue: 'us-east-1', description: 'AWS Region'),
+    string(name: 'appRepo', defaultValue: '', description: 'HTTPS Public Application Repository')
+   ])
+])
+
+def region = params.region
+def appRepo = params.appRepo
+
+cloudformation_pipeline {
+    region        = region
+    appRepo       = appRepo
+}
