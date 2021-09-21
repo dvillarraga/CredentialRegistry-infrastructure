@@ -1,8 +1,16 @@
 #!groovy
 @Library('jenkins-shared-library') _
 
+properties([
+  parameters([
+    string(name: 'branch', defaultValue: 'development', description: 'Branch to Deploy'),    
+   ])
+])
+
+def varBranch = params.branch
+
 ecr_build_push_pipeline {
-    branchCheckout  = 'master'
+    branchCheckout  = varBranch
     region          = 'us-east-1'
     appRepo         = 'https://github.com/dvillarraga/CredentialRegistry.git'
     repoUri         = '815996728789.dkr.ecr.us-east-1.amazonaws.com'
