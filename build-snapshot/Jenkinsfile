@@ -1,0 +1,10 @@
+#!groovy
+@Library('jenkins-shared-library') _
+
+ecr_build_push_pipeline {
+    branchCheckout  = 'master'
+    region          = 'us-east-1'
+    appRepo         = 'https://github.com/dvillarraga/CredentialRegistry.git'
+    repoUri         = '815996728789.dkr.ecr.us-east-1.amazonaws.com'
+    repoName        = 'credential-registry-snapshots'
+}
