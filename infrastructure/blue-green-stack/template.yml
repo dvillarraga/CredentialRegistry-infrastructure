@@ -158,7 +158,7 @@ Resources:
           Essential: true
           EnvironmentFiles:
             - Type: s3
-              Value: 'arn:aws:s3:::oscarv-credential-registry/.env.local'
+              Value: 'arn:aws:s3:::oscarv-credential-registry/.env'
           PortMappings:
             - HostPort: 9292
               Protocol: tcp
