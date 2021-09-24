@@ -1,0 +1,17 @@
+#!groovy
+@Library('jenkins-shared-library') _
+
+properties([
+  parameters([
+    string(name: 'region', defaultValue: 'us-east-1', description: 'AWS Region'),    
+   ])
+])
+
+def region = params.region
+
+cloudformation_pipeline {
+    region        = region
+    stackName     = 'credential-registry-app'
+    appTag        = 'ecs-bg-app'
+    templateFile  = 'infrastructure/blue-green-stack/template.yml'
+}
