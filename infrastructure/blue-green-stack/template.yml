@@ -146,6 +146,22 @@ Resources:
             Action: 'sts:AssumeRole'
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+  ECSTaskExecutionPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Properties:
+      ManagedPolicyName: !Sub 'ecs-execution-policy'
+      Description: >-
+        Policy that allows ECS to acces S3 Bucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action:
+              - 's3:GetObject'
+              - 's3:GetObjectVersion'
+            Resource:
+              - 'arn:aws:s3:::oscarv-credential-registry'
+              - 'arn:aws:s3:::oscarv-credential-registry/*'
   BlueTaskDefinition:
     Type: 'AWS::ECS::TaskDefinition'
     Properties:
