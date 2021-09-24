@@ -156,6 +156,9 @@ Resources:
         - Name: credential-registry
           Image: '815996728789.dkr.ecr.us-east-1.amazonaws.com/credential-registry-snapshots:1.0.1-SNAPSHOT'
           Essential: true
+          EnvironmentFiles:
+            - Type: s3
+              Value: 'arn:aws:s3:::oscarv-credential-registry/.env.local'
           PortMappings:
             - HostPort: 9292
               Protocol: tcp
