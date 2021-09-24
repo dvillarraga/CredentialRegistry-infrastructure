@@ -168,7 +168,6 @@ Resources:
       NetworkMode: awsvpc
       Cpu: '256'
       Memory: '512'
-      Family: ecs-demo
   ECSCluster:
     Type: 'AWS::ECS::Cluster'
     Properties: {}
@@ -199,7 +198,7 @@ Resources:
       Service: !Ref ECSService
       TaskDefinition: !Ref BlueTaskDefinition
       LoadBalancers:
-        - ContainerName: DemoApp
+        - ContainerName: credential-registry
           ContainerPort: 80
           TargetGroupArn: !Ref ALBTargetGroupBlue
   PrimaryTaskSet:
