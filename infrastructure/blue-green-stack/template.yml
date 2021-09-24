@@ -71,7 +71,7 @@ Resources:
       HealthyThresholdCount: 2
       Matcher:
         HttpCode: '200'
-      Port: 80
+      Port: 9292
       Protocol: HTTP
       TargetType: ip
       UnhealthyThresholdCount: 4
@@ -87,7 +87,7 @@ Resources:
       HealthyThresholdCount: 2
       Matcher:
         HttpCode: '200'
-      Port: 80
+      Port: 9292
       Protocol: HTTP
       TargetType: ip
       UnhealthyThresholdCount: 4
@@ -114,7 +114,7 @@ Resources:
               - TargetGroupArn: !Ref ALBTargetGroupBlue
                 Weight: 1
       LoadBalancerArn: !Ref AppALB
-      Port: 80
+      Port: 9292
       Protocol: HTTP
   ALBListenerProdRule:
     Type: 'AWS::ElasticLoadBalancingV2::ListenerRule'
@@ -199,7 +199,7 @@ Resources:
       TaskDefinition: !Ref BlueTaskDefinition
       LoadBalancers:
         - ContainerName: credential-registry
-          ContainerPort: 80
+          ContainerPort: 9292
           TargetGroupArn: !Ref ALBTargetGroupBlue
   PrimaryTaskSet:
     Type: 'AWS::ECS::PrimaryTaskSet'
